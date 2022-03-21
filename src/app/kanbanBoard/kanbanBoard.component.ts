@@ -33,6 +33,16 @@ export class KanbanBoard implements OnInit {
   generateTestId = (name) => {
     return name.split(' ').join('-');
   }
+
+  moveForward(task: Task) {
+    task.stage += 1;
+    this.configureTasksForRendering();
+  }
+
+  moveBackward(task: Task) {
+    task.stage -= 1;
+    this.configureTasksForRendering();
+  }
 }
 
 interface Task {

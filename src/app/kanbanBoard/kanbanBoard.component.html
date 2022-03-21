@@ -9,12 +9,16 @@
                 <span [attr.data-test-id]="generateTestId(task.name)+ '-name'">{{task.name}}</span>
                 <div class="icons">
                   <button class="icon-only x-small mx-2"
-                          [attr.data-test-id]="generateTestId(task.name)+ '-back'">
+                          [disabled]="task.stage === 0"
+                          [attr.data-test-id]="generateTestId(task.name)+ '-back'"
+                          (click)="moveBackward(task)">
                     <i class="material-icons">arrow_back</i>
                   </button>
 
                   <button class="icon-only x-small mx-2"
-                          [attr.data-test-id]="generateTestId(task.name)+ '-forward'">
+                          [disabled]="task.stage === stagesNames.length - 1"
+                          [attr.data-test-id]="generateTestId(task.name)+ '-forward'"
+                          (click)="moveForward(task)">
                     <i class="material-icons">arrow_forward</i>
                   </button>
                 </div>
